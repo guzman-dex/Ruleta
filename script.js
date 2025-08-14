@@ -710,29 +710,29 @@ function nuevaPartida() {
 //funciones de los mensajes de kira
 function obtenerMensajeInicial() {
     const mensajes = [
-        'bueno, a ver que onda',
-        'ta, a ver si sabes',
-        'lujo, al fin jugamos'
+        'veamos que tienes',
+        'a ver si sabes algo...',
+        'Hola, juguemos!'
     ];
     return mensajes[Math.floor(Math.random() * mensajes.length)];
 }
 
 function obtenerMensajeVictoriaKira() {
     const mensajes = [
-        'tomaaa, bien jugado',
+        'bien, gane',
         'dios perdona, yo no',
-        'a dormir, amigo'
+        'creo que mejor, dedícate a otra cosa'
     ];
     return mensajes[Math.floor(Math.random() * mensajes.length)];
 }
 
 function obtenerMensajeDerrotaKira() {
     const mensajes = [
-        'la gran... que buena jugada',
-        'boee, mucha suerte',
-        'tata, bien jugada',
-        'no me dejaste ni calentar',
-        'peee... muy bien'
+        'muy bien',
+        'eso solo fue suerte',
+        'soy un modelo lógico con cálculos y algoritmos ¿como pude perder?',
+        'nisiquiera pude calentar',
+        'estuviste bien'
     ];
     return mensajes[Math.floor(Math.random() * mensajes.length)];
 }
@@ -740,16 +740,16 @@ function obtenerMensajeDerrotaKira() {
 function obtenerMensajeProrrogaKira(gano) {
     if (gano) {
         const mensajes = [
-            'jaja, safe',
-            'casi... me ganas',
-            'mejor suerte... la mia'
+            'tuve suerte',
+            'casi me ganas, pero no',
+            'mejor suerte la próxima'
         ];
         return mensajes[Math.floor(Math.random() * mensajes.length)];
     } else {
         const mensajes = [
-            'lpm, ando en la cagada',
-            'bueno, ya fue, no juego mas',
-            'tatatatata, ni para eso me servis'
+            'no puedo creerlo...',
+            'ok, fue mucho por hoy',
+            'no puede ser...'
         ];
         return mensajes[Math.floor(Math.random() * mensajes.length)];
     }
