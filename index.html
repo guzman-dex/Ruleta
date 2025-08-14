@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla de inicio -->
+    <div id="pantalla-inicio" class="pantalla">
+        <div class="contenedor-inicio">
+            <h1 class="titulo-principal">RULETA</h1>
+            <div class="formulario-nombre">
+                <label for="nombre-usuario">Hola, dame tu nombre:</label>
+                <input type="text" id="nombre-usuario" placeholder="Tu nombre aquí..." maxlength="20">
+                <button id="btn-comenzar" class="btn-principal">COMENZAR JUEGO</button>
+                <button id="btn-instrucciones" class="btn-secundario">📖 VER INSTRUCCIONES</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Instrucciones -->
+    <div id="modal-instrucciones" class="modal oculto">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h2>📖 INSTRUCCIONES DEL JUEGO</h2>
+                <span class="cerrar-modal" id="cerrar-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="seccion-instruccion">
+                    <h3>🎯 OBJETIVO</h3>
+                    <p>Llegar a 21 exacto o quedarte lo más cerca posible sin pasarte. Cada jugador recibe 3 cartas iniciales.</p>
+                </div>
+                
+                <div class="seccion-instruccion">
+                    <h3>🃏 VALORES DE LAS CARTAS</h3>
+                    <ul>
+                        <li><strong>As:</strong> Vale 11 puntos (o 1 si te pasas de 21)</li>
+                        <li><strong>Figuras (J, Q, K):</strong> Valen 10 puntos</li>
+                        <li><strong>Números:</strong> Valen su valor numérico</li>
+                    </ul>
+                </div>
+                
+                <div class="seccion-instruccion">
+                    <h3>⚡ RITUALES (RITOS)</h3>
+                    <div class="ritos-explicacion">
+                        <div class="rito-explicacion">
+                            <div class="icono-rito">🎴</div>
+                            <h4>PIDO</h4>
+                            <p>Pedir una carta adicional. Solo puedes usar este rito UNA VEZ por ronda.</p>
+                        </div>
+                        <div class="rito-explicacion">
+                            <div class="icono-rito">🔄</div>
+                            <h4>PIDO Y CAMBIO</h4>
+                            <p>Pedir una carta y reemplazar una de tu mano. Solo puedes usar este rito UNA VEZ por ronda.</p>
+                        </div>
+                        <div class="rito-explicacion">
+                            <div class="icono-rito">🏳️</div>
+                            <h4>DEJO</h4>
+                            <p>Rendirte y abandonar la ronda. Kira gana automáticamente.</p>
+                        </div>
+                        <div class="rito-explicacion">
+                            <div class="icono-rito">✋</div>
+                            <h4>BAJO</h4>
+                            <p>Finalizar tu turno y dejar que Kira juegue. Se comparan las puntuaciones.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="seccion-instruccion">
+                    <h3>⚠️ REGLAS IMPORTANTES</h3>
+                    <ul>
+                        <li>Solo puedes usar <strong>PIDO</strong> o <strong>PIDO Y CAMBIO</strong> una vez por ronda</li>
+                        <li>Si usas uno, el otro se deshabilita automáticamente</li>
+                        <li>Si ambos empatan, se va a "prorroga" (cada uno recibe una carta adicional)</li>
+                        <li>En prorroga, gana quien se quede más cerca del 21, incluso si se pasa</li>
+                    </ul>
+                </div>
+                
+                <div class="seccion-instruccion">
+                    <h3>🎮 CÓMO JUGAR</h3>
+                    <ol>
+                        <li>Ingresa tu nombre y comienza la partida</li>
+                        <li>Recibirás 3 cartas iniciales</li>
+                        <li>Usa los ritos según tu estrategia</li>
+                        <li>Cuando estés listo, presiona "BAJO"</li>
+                        <li>Kira jugará su turno</li>
+                        <li>Se comparan las puntuaciones y se determina el ganador</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla del juego -->
+    <div id="pantalla-juego" class="pantalla oculto">
+        <div class="header-juego">
+            <h2>RULETA</h2>
+            <div class="info-jugadores">
+                <span id="nombre-jugador-display"></span> vs Kira
+            </div>
+        </div>
+
+        <!-- Área de la máquina (Kira) -->
+        <div class="area-maquina">
+            <div class="nombre-maquina">Kira</div>
+            <div class="cartas-maquina" id="cartas-maquina">
+                <!-- Las cartas de la máquina se ocultan -->
+                <div class="carta-oculta" id="carta-oculta-1">🂠</div>
+                <div class="carta-oculta" id="carta-oculta-2">🂠</div>
+                <div class="carta-oculta" id="carta-oculta-3">🂠</div>
+            </div>
+            <div class="puntuacion-maquina" id="puntuacion-maquina">?</div>
+        </div>
+
+        <!-- Área del jugador -->
+        <div class="area-jugador">
+            <div class="nombre-jugador" id="nombre-jugador-area"></div>
+            <div class="cartas-jugador" id="cartas-jugador">
+                <!-- Las cartas del jugador se mostrarán aquí -->
+            </div>
+            <div class="puntuacion-jugador" id="puntuacion-jugador">0</div>
+        </div>
+
+        <!-- Área de mensajes de Kira -->
+        <div class="mensajes-kira" id="mensajes-kira">
+            <div class="mensaje-actual" id="mensaje-actual">¡Hola! ¿Listo para jugar?</div>
+        </div>
+
+        <!-- Panel de Ritos -->
+        <div class="panel-ritos">
+            <h3 class="titulo-ritos">⚡ RITOS</h3>
+            <div class="ritos-container">
+                <button id="btn-pido" class="rito-boton">
+                    <div class="icono-rito">🎴</div>
+                    <span class="nombre-rito">PIDO</span>
+                </button>
+                <button id="btn-pido-cambio" class="rito-boton">
+                    <div class="icono-rito">🔄</div>
+                    <span class="nombre-rito">PIDO Y CAMBIO</span>
+                </button>
+                <button id="btn-dejo" class="rito-boton">
+                    <div class="icono-rito">🏳️</div>
+                    <span class="nombre-rito">DEJO</span>
+                </button>
+                <button id="btn-bajo" class="rito-boton">
+                    <div class="icono-rito">✋</div>
+                    <span class="nombre-rito">BAJO</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Área de resultado -->
+        <div class="area-resultado oculto" id="area-resultado">
+            <div class="resultado-texto" id="resultado-texto"></div>
+            <div class="cartas-reveladas" id="cartas-reveladas">
+                <!-- Aquí se mostrarán las cartas de ambos cuando se revelen -->
+            </div>
+            <button id="btn-nueva-partida" class="btn-principal">NUEVA PARTIDA</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

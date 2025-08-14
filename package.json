@@ -1,0 +1,34 @@
+{
+  "name": "Ruleta",
+  "version": "1.0.0",
+  "description": "Juego de cartas",
+  "main": "index.html",
+  "scripts": {
+    "start": "start index.html",
+    "dev": "live-server",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "juego",
+    "cartas",
+    "ruleta",
+    "21",
+    "poker",
+    "html5",
+    "css3",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Guzman",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "local"
+  },
+  "homepage": "./index.html"
+} 

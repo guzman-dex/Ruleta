@@ -1,0 +1,666 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Clases de utilidad */
+.oculto {
+    display: none !important;
+}
+
+.pantalla {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pantalla de inicio */
+.contenedor-inicio {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 2px solid #e94560;
+    box-shadow: 0 0 30px rgba(233, 69, 96, 0.3);
+}
+
+.titulo-principal {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: #e94560;
+    text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.formulario-nombre {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formulario-nombre label {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.formulario-nombre input {
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.formulario-nombre input:focus {
+    outline: none;
+    border-color: #e94560;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.formulario-nombre input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Botones */
+.btn-principal {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #e94560, #ff6b6b);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+}
+
+.btn-principal:active {
+    transform: translateY(0);
+}
+
+.btn-secundario {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #4a90e2, #5dade2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-secundario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(74, 144, 226, 0.4);
+}
+
+/* Modal de Instrucciones */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-contenido {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 2px solid #4a90e2;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(74, 144, 226, 0.5);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 18px 18px 0 0;
+}
+
+.modal-header h2 {
+    color: #4a90e2;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.cerrar-modal {
+    color: #4a90e2;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.cerrar-modal:hover {
+    color: #e94560;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.seccion-instruccion {
+    margin-bottom: 2rem;
+}
+
+.seccion-instruccion h3 {
+    color: #e94560;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #4a90e2;
+    padding-bottom: 0.5rem;
+}
+
+.seccion-instruccion p, .seccion-instruccion li {
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-instruccion ul, .seccion-instruccion ol {
+    margin-left: 1.5rem;
+}
+
+.ritos-explicacion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.rito-explicacion {
+    background: rgba(74, 144, 226, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #4a90e2;
+    text-align: center;
+}
+
+.rito-explicacion .icono-rito {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.rito-explicacion h4 {
+    color: #4a90e2;
+    margin-bottom: 0.5rem;
+}
+
+.rito-explicacion p {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+/* Pantalla del juego */
+#pantalla-juego {
+    padding: 2rem;
+    justify-content: flex-start;
+}
+
+.header-juego {
+    text-align: center;
+    margin-bottom: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid #e94560;
+}
+
+.header-juego h2 {
+    font-size: 2.5rem;
+    color: #e94560;
+    margin-bottom: 0.5rem;
+}
+
+.info-jugadores {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+/* Área de la máquina */
+.area-maquina {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #4a90e2;
+}
+
+.nombre-maquina {
+    font-size: 1.5rem;
+    color: #4a90e2;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.cartas-maquina {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.carta-oculta {
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    border: 2px solid #4a90e2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #4a90e2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.puntuacion-maquina {
+    font-size: 1.5rem;
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+/* Área del jugador */
+.area-jugador {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #e94560;
+}
+
+.nombre-jugador {
+    font-size: 1.5rem;
+    color: #e94560;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.cartas-jugador {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.carta-jugador {
+    width: 80px;
+    height: 120px;
+    background: white;
+    border: 2px solid #e94560;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.carta-jugador img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nombre-carta {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.puntuacion-jugador {
+    font-size: 1.5rem;
+    color: #e94560;
+    font-weight: bold;
+}
+
+/* Cartas seleccionables */
+.carta-seleccionable {
+    cursor: pointer;
+    border: 3px solid #ffd700 !important;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6) !important;
+    transform: scale(1.05);
+}
+
+.carta-seleccionable:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8) !important;
+    border-color: #ffed4e !important;
+}
+
+/* Joker en Prorroga */
+.joker-prorroga {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: aparecerJoker 0.5s ease-out;
+}
+
+.joker-contenido {
+    text-align: center;
+    animation: rebotarJoker 1s ease-in-out infinite alternate;
+}
+
+.joker-imagen {
+    width: 200px;
+    height: 300px;
+    object-fit: contain;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 30px #ffd700);
+}
+
+.joker-texto {
+    font-size: 3rem;
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 0 0 20px #ffd700;
+    animation: parpadearJoker 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes aparecerJoker {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rebotarJoker {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes parpadearJoker {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* Mensajes de Kira */
+.mensajes-kira {
+    text-align: center;
+    margin-bottom: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid #4a90e2;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensaje-actual {
+    font-size: 1.3rem;
+    color: #4a90e2;
+    font-style: italic;
+    max-width: 600px;
+}
+
+/* Panel de Ritos */
+.panel-ritos {
+    position: fixed;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #e94560;
+    border-radius: 15px;
+    padding: 1.5rem;
+    z-index: 100;
+    min-width: 200px;
+}
+
+.titulo-ritos {
+    text-align: center;
+    color: #e94560;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e94560;
+    padding-bottom: 0.5rem;
+}
+
+.ritos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rito-boton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    color: white;
+    border: 2px solid #e94560;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    min-width: 150px;
+}
+
+.rito-boton:hover {
+    background: linear-gradient(45deg, #e94560, #ff6b6b);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+}
+
+.rito-boton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    border-color: #666;
+}
+
+.icono-rito {
+    font-size: 1.5rem;
+}
+
+.nombre-rito {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Área de resultado */
+.area-resultado {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid #e94560;
+    margin-top: 2rem;
+}
+
+.resultado-texto {
+    font-size: 1.5rem;
+    color: #e94560;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.cartas-reveladas {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.cartas-jugador-reveladas,
+.cartas-maquina-reveladas {
+    text-align: center;
+}
+
+.cartas-jugador-reveladas h3,
+.cartas-maquina-reveladas h3 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.cartas-reveladas .carta-jugador,
+.cartas-reveladas .carta-oculta {
+    margin: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 2.5rem;
+    }
+    
+    .contenedor-inicio {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .cartas-maquina,
+    .cartas-jugador {
+        gap: 0.5rem;
+    }
+    
+    .carta-oculta,
+    .carta-jugador {
+        width: 60px;
+        height: 90px;
+    }
+    
+    .panel-ritos {
+        position: static;
+        transform: none;
+        margin: 2rem auto;
+        max-width: 400px;
+    }
+    
+    .ritos-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .rito-boton {
+        min-width: 120px;
+    }
+    
+    .modal-contenido {
+        margin: 1rem;
+        max-height: 80vh;
+    }
+    
+    .ritos-explicacion {
+        grid-template-columns: 1fr;
+    }
+    
+    .joker-imagen {
+        width: 150px;
+        height: 225px;
+    }
+    
+    .joker-texto {
+        font-size: 2rem;
+    }
+}
+
+/* Animaciones */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.carta-jugador,
+.carta-oculta {
+    animation: aparecer 0.5s ease-out;
+}
+
+/* Efectos de hover para las cartas */
+.carta-jugador:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+}
+
+.carta-oculta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+} 
